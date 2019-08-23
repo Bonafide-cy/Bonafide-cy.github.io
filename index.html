@@ -1,314 +1,97 @@
-<!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  <title>myblog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="MinHow,MinHow's Blog">
-  
-  <meta name="description" content="myblog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="myblog">
-<meta property="og:url" content="http://yiyiyi6.github.io/index.html">
-<meta property="og:site_name" content="myblog">
-<meta property="og:description" content="myblog">
-<meta property="og:locale" content="ch">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="myblog">
-<meta name="twitter:description" content="myblog">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
-  
+{% extends "_layout.njk" %}
 
-  
-  
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for("css/page.css") }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for("css/post.css") }}">
+{% endblock %}
 
-</head>
-</html>
-<body>
-  <div id="container">
-      <header id="header">
-    <div id="banner"></div>
-    <div id="header-outer">
-        <div id="header-menu" class="header-menu-pos animated">
-            <div class="header-menu-container">
-                <a href="/" class="left">
-                    <span class="site-title">MinHow&#39;s Blog</span>
-                </a>
-                <nav id="header-menu-nav" class="right">
-                    
-                    <a  href="/">
-                        <i class="fa fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                    
-                    <a  href="/archives">
-                        <i class="fa fa-archive"></i>
-                        <span>Archives</span>
-                    </a>
-                    
-                    <a  href="/about">
-                        <i class="fa fa-user"></i>
-                        <span>About</span>
-                    </a>
-                    
-                </nav>
-                <a class="mobile-header-menu-button">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </div>
-        </div>
-        <div id="header-row">
-            <div id="logo">
-                <a href="/">
-                    <img src="/images/logo.png" alt="logo">
-                </a>
-            </div>
-            <div class="header-info">
-                <div id="header-title">
-                    
-                    <h2>
-                        MinHow&#39;s Blog
-                    </h2>
-                    
-                </div>
-                <div id="header-description">
-                    
-                    <h3>
-                        一个专注 WEB 开发的技术博客
-                    </h3>
-                    
-                </div>
-            </div>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a title="MinHow" target="_blank" href="//minhow.com">
-                            <i class="fa fa-home fa-2x"></i></a>
-                    
-                        <a title="Github" target="_blank" href="//github.com/wongminho">
-                            <i class="fa fa-github fa-2x"></i></a>
-                    
-                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
-                            <i class="fa fa-weibo fa-2x"></i></a>
-                    
-                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
-                            <i class="fa fa-twitter fa-2x"></i></a>
-                    
-                </div>
-            </nav>
-        </div>
+{% block title %}{{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
+
+{% block content %}
+{% set comment = false %}
+<div id="index" class="index page">
+  {% for post in page.posts.toArray() %}
+  <article class="article post card{% if theme.animate %} animate{% endif %}" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(post.path) }}">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="{{ config.author }}">
+        <meta itemprop="description" content="{{ config.description }}">
+        <meta itemprop="image" content="{{ url_for( theme.avatar) }}">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="{{ config.title }}">
+      </span>
     </div>
-</header>
-      <div class="outer">
-        <section id="main" class="body-wrap">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/15/hello-world/"  >Hello World</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-            
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-            <div class="post-copyright">
-    <div class="content">
-        <p>最后更新： 2019年08月15日 17:09</p>
-        <p>原始链接： <a class="post-url" href="/2019/08/15/hello-world/" title="Hello World">http://yiyiyi6.github.io/2019/08/15/hello-world/</a></p>
-        <footer>
-            <a href="http://yiyiyi6.github.io">
-                <img src="/images/logo.png" alt="John Doe">
-                John Doe
-            </a>
-        </footer>
-    </div>
-</div>
-
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-08-15</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/08/15/hello-world/#more" class="article-more-link" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-
-</section>
-        
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="{{ url_for(post.path) }}" itemprop="url">{{ post.title }}</a>
+      </h1>
+      <div class="post-meta">
+        {% if post.date %}
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date, config.date_format) }} {{ time(post.date, config.time_format) }}</time></span>
+        </span>
+        {% endif %}
+        {% if post.categories and post.categories.toArray().length %}
+        {% if post.date %}
+        <span class="post-meta-divider divider">|</span>
+        {% endif %}
+        <span class="post-categories">
+          {# About `-`: https://mozilla.github.io/nunjucks/cn/templating.html#part-861ece9d8e5ce60c #}
+          {% for cat in post.categories.toArray() -%}
+          {% if loop.first %}<i class="far fa-folder-open"></i>{% else %}<i class="fas fa-angle-right"></i>{% endif %}<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a></span>
+          {%- endfor %}
+        </span>
+        {% endif %}
+        {% if post.comment !== false and theme.comment.enable %}
+        {% if theme.comment.disqus_shortname %}
+        {% if post.categories or post.date %}
+        <span class="post-meta-divider divider">|</span>
+        {% endif %}
+        <span class="post-comment-count">
+          <i class="far fa-comments"></i><span><a href="{{ url_for(post.path) }}#disqus_thread" itemprop="discussionUrl"><span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ post.path }}" itemprop="commentCount"></span></a></span>
+        </span>
+        {% endif %}
+        {% endif %}
       </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-      <p>
-        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
-        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
-      &copy; 2019 John Doe<br>
-      </p>
-    </div>
-  </div>
-</footer>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script>
-  var mihoConfig = {
-      root: "http://yiyiyi6.github.io",
-      animate: true,
-      isHome: true,
-      share: true,
-      reward: 1
-  }
-</script>
-<div class="sidebar">
-    <div id="sidebar-search" title="Search">
-        <i class="fa fa-search"></i>
-    </div>
-    <div id="sidebar-category" title="Categories">
-        <i class="fa fa-book"></i>
-    </div>
-    <div id="sidebar-tag" title="Tags">
-        <i class="fa fa-tags"></i>
-    </div>
-    <div id="sidebar-top">
-        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
-    </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      {% if post.excerpt  %}
+      {{ post.excerpt }}
+      {% elif post.description %}
+      {{ post.description }}
+      {% elif theme.auto_excerpt %}
+      {% set st_content = post.content | striptags %}
+      {{ st_content.substring(0, theme.auto_excerpt) }}
+      {% else %}
+      {{ post.content }}
+      {% endif %}
+    </main>
+    <footer class="post-footer">
+      {% if post.tags and post.tags.toArray().length %}
+      <div class="post-tags">
+        {% for tag in post.tags.toArray() %}
+        <a class="post-tag button" href="{{ url_for(tag.path) }}" rel="tag"><i class="fas fa-tags"></i>{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </footer>
+  </article>
+  {% endfor %}
+  {% if page.prev or page.next %}
+  <nav class="pagination">
+    {{
+      paginator({
+        prev_text: "<i class=\"fas fa-angle-left\" aria-label=\"" + __("accessibility.prev_page") + "\"></i>",
+        next_text: "<i class=\"fas fa-angle-right\" aria-label=\"" + __("accessibility.next_page") + "\"></i>",
+        mid_size: 1
+      })
+    }}
+  </nav>
+  {% endif %}
+  {% if theme.comment.enable %}
+  {% include "comment.njk" %}
+  {% endif %}
 </div>
-<div class="sidebar-menu-box" id="sidebar-menu-box">
-    <div class="sidebar-menu-box-container">
-        <div id="sidebar-menu-box-categories">
-            
-        </div>
-        <div id="sidebar-menu-box-tags">
-            
-        </div>
-    </div>
-    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
-</div>
-<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
-    <div class="mobile-header-menu-container">
-        <span class="title">Menus</span>
-        <ul class="mobile-header-menu-navbar">
-            
-            <li>
-                <a  href="/">
-                    <i class="fa fa-home"></i><span>Home</span>
-                </a>
-            </li>
-            
-            <li>
-                <a  href="/archives">
-                    <i class="fa fa-archive"></i><span>Archives</span>
-                </a>
-            </li>
-            
-            <li>
-                <a  href="/about">
-                    <i class="fa fa-user"></i><span>About</span>
-                </a>
-            </li>
-            
-        </ul>
-    </div>
-    <div class="mobile-header-tag-container">
-        <span class="title">Tags</span>
-        <div id="mobile-header-container-tags">
-            
-        </div>
-    </div>
-</div>
-<div class="search-wrap">
-    <span class="search-close">&times;</span>
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-            <i class="icon icon-lg icon-chevron-left"></i>
-        </a>
-        <input class="search-field" placeholder="Search..." id="keywords">
-        <a id="search-submit" href="javascript:;">
-            <i class="fa fa-search"></i>
-        </a>
-    <div class="search-container" id="search-container">
-        <ul class="search-result" id="search-result">
-        </ul>
-    </div>
-</div>
-
-<div id="search-tpl">
-    <li class="search-result-item">
-        <a href="{url}" class="search-item-li">
-            <span class="search-item-li-title" title="{title}">{title}</span>
-        </a>
-    </li>
-</div>
-<script src="/js/search.js"></script>
-<script src="/js/main.js"></script>
-
-
-  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
-  <div id="particles"></div>
-  <script src="/js/particles.js"></script>
-
-
-
-
-
-
-
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
-
-
-  </div>
-</body>
-</html>
+{% endblock %}
